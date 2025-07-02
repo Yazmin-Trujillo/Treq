@@ -1,6 +1,7 @@
 import Form from 'next/form';
 import Image from 'next/image';
 import Button from '../components/atoms/Button';
+import Header from '../components/atoms/Header';
 
 export default function Login() {
   return (
@@ -11,8 +12,8 @@ export default function Login() {
         </div>
       </div>
       <div className='flex flex-1 items-center justify-center'>
-        <div className='flex h-1/3 w-2/5 flex-col'>
-          <div className='text-center text-xl font-medium'>Login</div>
+        <div className='flex h-1/3 w-2/5 flex-col items-center justify-center'>
+          <Header text='Login' />
           <Form action={'/'} className='flex flex-1 flex-col justify-around'>
             <input
               name='Nameeee'
