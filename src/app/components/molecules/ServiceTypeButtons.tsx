@@ -48,7 +48,7 @@ export default function ServiceTypeButtons({ selectedServices }: Props) {
             onClick={() => setSelectedType(item)}
             className={`flex justify-center overflow-hidden rounded-full border px-2 py-0 text-base sm:text-lg md:text-xl ${
               item.type === selectedType?.type
-                ? `bg-[${selectedType?.color}]`
+                ? `${selectedType?.type?.toLocaleLowerCase()}`
                 : 'bg-[#F1EDED]'
             }`}
           >
