@@ -2,43 +2,17 @@
 import Form from 'next/form';
 import Header from '../components/atoms/Header';
 import Button from '../components/atoms/Button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Input from '../components/atoms/Input';
 import ServiceTypeButtons from '../components/molecules/ServiceTypeButtons';
 import { Services } from '../utils/types';
 
-const SERVICE_TYPE = [
-  {
-    type: 'Electricidad',
-    color: '#41C7F3',
-  },
-  {
-    type: 'Plomeria',
-    color: '#C6C0C0',
-  },
-  {
-    type: 'Limpieza',
-    color: '#EFFF88',
-  },
-  {
-    type: 'General',
-    color: '#FC7878',
-  },
-  { type: 'Jardineria', color: '#49E754' },
-];
-
-const SERVICE_TYPE_COLOR = [
-  { electricidad: '#41C7F3' },
-  { plomeria: '#C6C0C0' },
-  { limpieza: '#EFFF88' },
-  { general: '#FC7878' },
-  { jardineria: '#49E754' },
-];
-
 export default function CreateEditTicke() {
   const [selectedService, setSelectedService] = useState<Services>();
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: FormData) => {
+    console.log('tipo de servicio seleccionado', selectedService);
+
     for (const pair of formData.entries()) {
       console.log(pair[0], pair[1]);
     }

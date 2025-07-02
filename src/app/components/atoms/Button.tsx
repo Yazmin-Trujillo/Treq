@@ -1,6 +1,6 @@
 type Props = {
   text: string;
-  buttonType: 'submit' | 'reset' | 'button' | undefined;
+  buttonType?: 'submit' | 'reset' | 'button';
 };
 
 export default function Button({ text, buttonType }: Props) {
