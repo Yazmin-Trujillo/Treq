@@ -46,13 +46,13 @@ export default function ServiceTypeButtons({ selectedServices }: Props) {
           <div
             key={item.type}
             onClick={() => setSelectedType(item)}
-            className={`flex justify-center overflow-hidden rounded-full border px-2 py-0 text-base sm:text-lg md:text-xl ${
+            className={`flex justify-center overflow-hidden rounded-full border border-gray-300 px-2 py-1 text-xs font-bold sm:text-sm md:text-base ${
               item.type === selectedType?.type
                 ? `${selectedType?.type?.toLocaleLowerCase()}`
                 : 'bg-[#F1EDED]'
             }`}
           >
-            <p className='truncate'>{item.type}</p>
+            <p className='truncate tracking-wider'>{item.type}</p>
           </div>
         ))}
       </div>

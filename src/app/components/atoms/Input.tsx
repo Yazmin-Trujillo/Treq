@@ -44,9 +44,10 @@ export default function Input({
         name={name}
         type={inputType || undefined}
         required={required}
-        className='w-full rounded-lg border px-4 py-2'
+        className='w-full rounded-lg border border-stone-400 px-4 py-2 hover:border-sky-400 focus:shadow-[0_0_0_0.2rem_rgb(165,243,252)] focus:outline-0 focus:outline-offset-0 focus:outline-sky-200'
         defaultValue={defaultValue}
       />
     </>
   );
 }
+//focus:outline-4 focus:outline-offset-0 focus:outline-sky-200

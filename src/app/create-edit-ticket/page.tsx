@@ -40,7 +40,7 @@ export default function CreateEditTicke() {
           <textarea
             name='descripcion'
             rows={4}
-            className='w-full rounded-lg border px-4 py-2'
+            className='w-full rounded-lg border border-stone-400 px-4 py-2 hover:border-sky-400 focus:shadow-[0_0_0_0.2rem_rgb(165,243,252)] focus:outline-0 focus:outline-offset-0 focus:outline-sky-200'
           ></textarea>
         </div>
         <div className='w-full'>
@@ -51,7 +51,7 @@ export default function CreateEditTicke() {
           <textarea
             name='insumos'
             rows={4}
-            className='w-full rounded-lg border px-4 py-2'
+            className='w-full rounded-lg border border-stone-400 px-4 py-2 hover:border-sky-400 focus:shadow-[0_0_0_0.2rem_rgb(165,243,252)] focus:outline-0 focus:outline-offset-0 focus:outline-sky-200'
           ></textarea>
         </div>
         <div className='w-full'>
@@ -62,7 +62,7 @@ export default function CreateEditTicke() {
             defaultValue='como se manejaran las imagenes?'
           />
         </div>
-        <Button text='Crear' buttonType='submit' />
+        <Button text='Crear' buttonType='submit' buttonClassName='mt-6' />
       </Form>
     </div>
   );
