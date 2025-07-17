@@ -1,6 +1,5 @@
 'use client';
 import { Size } from '@/app/utils/types';
-import { useEffect, useState } from 'react';
 
 type Props = {
   text: string;
@@ -8,18 +7,16 @@ type Props = {
 };
 
 export default function Header({ text, textSize }: Props) {
-  const [size, setSize] = useState(textSize);
-
   return (
     <div
       className={`${
-        size === 'small'
-          ? 'sm:text-2x1 text-xl lg:text-3xl'
-          : size === 'medium'
-            ? 'sm:text-3x1 text-2xl lg:text-4xl'
-            : size === 'big'
-              ? 'sm:text-4x1 text-3xl lg:text-5xl'
-              : 'lg:text-2x1 text-lg sm:text-xl'
+        textSize === 'small'
+          ? 'text-xl sm:text-2xl lg:text-3xl'
+          : textSize === 'medium'
+            ? 'text-2xl sm:text-3xl lg:text-4xl'
+            : textSize === 'big'
+              ? 'text-3xl sm:text-4xl lg:text-5xl'
+              : 'text-lg sm:text-xl lg:text-2xl'
       } font-medium capitalize`}
     >
       {text}
