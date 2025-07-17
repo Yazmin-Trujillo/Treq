@@ -17,3 +17,9 @@ export type ServiceType = {
   type: Services;
   color: string;
 };
+
+export type TaskLetterType = {
+  taskName: string;
+  taskLocation: string;
+  taskType: Services;
+};

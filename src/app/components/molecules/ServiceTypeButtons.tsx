@@ -1,5 +1,6 @@
 import { Services, ServiceType } from '@/app/utils/types';
 import { useEffect, useState } from 'react';
+import ServiceTypeButton from '../atoms/ServiceTypeButton';
 
 const SERVICE_TYPE: ServiceType[] = [
   {
@@ -29,21 +30,35 @@ const SERVICE_TYPE: ServiceType[] = [
   { jardineria: '#49E754' },
 ];*/
 
-type Props = { selectedServices: (service?: Services) => void };
+type Props = {
+  selectedServices: Services | undefined;
+  setSelectedServices: (service?: Services) => void;
+};
 
-export default function ServiceTypeButtons({ selectedServices }: Props) {
-  const [selectedType, setSelectedType] = useState<ServiceType>();
+export default function ServiceTypeButtons({
+  selectedServices,
+  setSelectedServices,
+}: Props) {
+  const [selectedType, setSelectedType] = useState<Services | undefined>(
+    selectedServices,
+  );
 
   useEffect(() => {
-    selectedServices(selectedType?.type);
-  }, [selectedType, selectedServices]);
+    setSelectedServices(selectedType);
+  }, [selectedType, setSelectedServices]);
 
   return (
     <div className='flex flex-col gap-2'>
       <div className='md:text-3x1 text-xl sm:text-2xl'>Tipo de servicio</div>
       <div className='grid grid-cols-3 gap-4'>
         {SERVICE_TYPE.map((item) => (
-          <div
+          <ServiceTypeButton
+            key={item.type}
+            taskType={item.type}
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+          />
+          /*<div
             key={item.type}
             onClick={() => setSelectedType(item)}
             className={`flex justify-center overflow-hidden rounded-full border border-gray-300 px-2 py-1 text-xs font-bold sm:text-sm md:text-base ${
@@ -53,7 +68,7 @@ export default function ServiceTypeButtons({ selectedServices }: Props) {
             }`}
           >
             <p className='truncate tracking-wider'>{item.type}</p>
-          </div>
+          </div>*/
         ))}
       </div>
     </div>

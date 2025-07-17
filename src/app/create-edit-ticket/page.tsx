@@ -8,7 +8,9 @@ import ServiceTypeButtons from '../components/molecules/ServiceTypeButtons';
 import { Services } from '../utils/types';
 
 export default function CreateEditTicke() {
-  const [selectedService, setSelectedService] = useState<Services>();
+  const [selectedService, setSelectedService] = useState<
+    Services | undefined
+  >();
 
   const onSubmit = (formData: FormData) => {
     console.log('tipo de servicio seleccionado', selectedService);
@@ -34,7 +36,10 @@ export default function CreateEditTicke() {
         <div className='w-full'>
           <Input label='Asunto' name='asunto' required />
         </div>
-        <ServiceTypeButtons selectedServices={setSelectedService} />
+        <ServiceTypeButtons
+          setSelectedServices={setSelectedService}
+          selectedServices={selectedService}
+        />
         <div className='w-full'>
           <div className='md:text-3x1 text-xl sm:text-2xl'>Descripcion</div>
           <textarea
