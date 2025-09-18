@@ -1,34 +1,37 @@
 'use client';
+import { Filter } from '@/app/page';
 import { Services } from '@/app/utils/types';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
-  taskType: Services;
-  selectedType?: Services;
-  setSelectedType?: (service?: Services) => void;
+  taskType: Filter | Services;
+  selectedOption?: string;
+  setSelectedOption?: (option?: Filter | Services | undefined) => void;
   buttonClassName?: string;
+  bgColorSelected?: string;
 };
 
 export default function ServiceTypeButton({
   taskType,
-  selectedType,
-  setSelectedType,
+  selectedOption,
+  setSelectedOption,
+  buttonClassName,
+  bgColorSelected,
 }: Props) {
-  //const [selectedType, setSelectedType] = useState<Services>();
-
-  /* useEffect(() => {
-    setSelectedServices(taskType);
-  }, [selectedType, setSelectedServices]);*/
-
   return (
     <div
-      onClick={setSelectedType ? () => setSelectedType(taskType) : () => {}}
-      className={`flex w-full max-w-[10rem] justify-center overflow-hidden rounded-full border border-gray-300 px-2 py-1 text-xs font-bold sm:text-sm md:text-base ${
-        setSelectedType
-          ? taskType === selectedType
-            ? `${taskType.toLocaleLowerCase()}`
-            : 'bg-[#F1EDED]'
-          : taskType.toLocaleLowerCase()
-      }`}
+      onClick={setSelectedOption ? () => setSelectedOption(taskType) : () => {}}
+      className={twMerge(
+        'flex max-w-[10rem] min-w-[5rem] justify-center overflow-hidden rounded-full px-4 py-1 text-xs font-bold sm:w-[6rem] sm:w-[8rem] sm:text-base sm:text-sm',
+        buttonClassName,
+        setSelectedOption
+          ? taskType === selectedOption && bgColorSelected
+            ? `${bgColorSelected} text-white`
+            : taskType === selectedOption
+              ? `${taskType.toLocaleLowerCase()}`
+              : `${taskType.toLocaleLowerCase()} opacity`
+          : taskType.toLocaleLowerCase(),
+      )}
     >
       <p className='truncate tracking-wider'>{taskType}</p>
     </div>

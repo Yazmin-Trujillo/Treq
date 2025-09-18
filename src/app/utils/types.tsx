@@ -7,6 +7,8 @@ export type Services =
   | 'General'
   | 'Jardineria';
 
+export type State = 'Abierto' | 'Cerrado';
+
 export enum CosasEnum {
   COSAS = 1,
   OTRAS_COSAS,
@@ -15,11 +17,11 @@ export enum CosasEnum {
 
 export type ServiceType = {
   type: Services;
-  color: string;
 };
 
 export type TaskLetterType = {
   taskName: string;
   taskLocation: string;
   taskType: Services;
+  state: State;
 };

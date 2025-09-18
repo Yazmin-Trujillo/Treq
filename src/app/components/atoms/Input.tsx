@@ -38,7 +38,7 @@ export default function Input({
   return (
     <>
       {label ? (
-        <div className='md:text-3x1 text-xl sm:text-2xl'>{label}</div>
+        <div className='text-xl sm:text-2xl md:text-3xl'>{label}</div>
       ) : null}
       <input
         name={name}

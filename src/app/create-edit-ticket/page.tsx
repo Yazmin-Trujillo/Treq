@@ -7,10 +7,16 @@ import Input from '../components/atoms/Input';
 import ServiceTypeButtons from '../components/molecules/ServiceTypeButtons';
 import { Services } from '../utils/types';
 
+const SERVICES_TYPE: Services[] = [
+  'Electricidad',
+  'Plomeria',
+  'Limpieza',
+  'General',
+  'Jardineria',
+];
+
 export default function CreateEditTicke() {
-  const [selectedService, setSelectedService] = useState<
-    Services | undefined
-  >();
+  const [selectedService] = useState<string | undefined>();
 
   const onSubmit = (formData: FormData) => {
     console.log('tipo de servicio seleccionado', selectedService);
@@ -37,11 +43,12 @@ export default function CreateEditTicke() {
           <Input label='Asunto' name='asunto' required />
         </div>
         <ServiceTypeButtons
-          setSelectedServices={setSelectedService}
-          selectedServices={selectedService}
+          options={SERVICES_TYPE}
+          label='Tipo de servicio'
+          buttonClassName='py-2'
         />
         <div className='w-full'>
-          <div className='md:text-3x1 text-xl sm:text-2xl'>Descripcion</div>
+          <div className='text-xl sm:text-2xl md:text-3xl'>Descripcion</div>
           <textarea
             name='descripcion'
             rows={4}
@@ -52,7 +59,7 @@ export default function CreateEditTicke() {
           <Input label='Area/Ubicacion' name='area' />
         </div>
         <div className='w-full'>
-          <div className='md:text-3x1 text-xl sm:text-2xl'>Insumos</div>
+          <div className='text-xl sm:text-2xl md:text-3xl'>Insumos</div>
           <textarea
             name='insumos'
             rows={4}

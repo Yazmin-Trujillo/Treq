@@ -27,26 +27,41 @@ body {
   .electricidad {
     background-color: #0ea5e9;
     color: white;
-    border-color: #0ea5e9;
+
+    &&.opacity {
+      background-color: #0ea4e980;
+    }
   }
   .plomeria {
     background-color: #757575;
     color: white;
-    border-color: #757575;
+
+    &&.opacity {
+      background-color: #75757580;
+    }
   }
   .limpieza {
     background-color: #f97316;
     color: white;
-    border-color: #f97316;
+
+    &&.opacity {
+      background-color: #f9731680;
+    }
   }
   .general {
     background-color: #ef4444;
     color: white;
-    border-color: #ef4444;
+
+    &&.opacity {
+      background-color: #ef444480;
+    }
   }
   .jardineria {
     background-color: #22c55e;
     color: white;
-    border-color: #22c55e;
+
+    &&.opacity {
+      background-color: #22c55e80;
+    }
   }
 }
