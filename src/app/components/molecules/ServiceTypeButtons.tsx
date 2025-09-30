@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
 import ServiceTypeButton from '../atoms/ServiceTypeButton';
 import { twMerge } from 'tailwind-merge';
-import { Filter } from '@/app/page';
 import { Services } from '@/app/utils/types';
 
 type Props = {
-  options: Filter[] | Services[];
+  options: Services[] | string[];
   label?: string;
-  selectedFilter?: Filter | Services;
+  opacity?: boolean;
+  selectedFilter?: string;
+  setSelectedFilter?: (filter?: string | undefined) => void;
   wrapperStyles?: string;
   optionsContainerStyles?: string;
   buttonClassName?: string;
   bgColorSelected?: string;
-  setSelectedFilter?: (filter?: Filter | Services | undefined) => void;
 };
 
 export default function ServiceTypeButtons({
   options,
   label,
+  opacity,
   selectedFilter,
   wrapperStyles,
   optionsContainerStyles,
@@ -25,15 +25,21 @@ export default function ServiceTypeButtons({
   bgColorSelected,
   setSelectedFilter,
 }: Props) {
-  const [selectedOption, setSelectedOption] = useState<
-    Filter | Services | undefined
-  >(selectedFilter);
-
-  useEffect(() => {
-    setSelectedFilter && selectedOption
-      ? setSelectedFilter(selectedOption)
-      : null;
-  }, [selectedOption]);
+  const BgColor = (type: string) => {
+    if (type === 'Electricidad') {
+      return 'bg-[#0ea5e9]';
+    } else if (type === 'Plomeria') {
+      return 'bg-[#757575]';
+    } else if (type === 'Limpieza') {
+      return 'bg-[#f97316]';
+    } else if (type === 'General') {
+      return 'bg-[#ef4444]';
+    } else if (type === 'Jardineria') {
+      return 'bg-[#22c55e]';
+    } else {
+      return undefined;
+    }
+  };
 
   return (
     <div className={`flex w-full flex-col gap-2 ${wrapperStyles}`}>
@@ -46,14 +52,16 @@ export default function ServiceTypeButtons({
           optionsContainerStyles,
         )}
       >
-        {options.map((item, index) => (
+        {options.map((option, index) => (
           <ServiceTypeButton
             key={index}
-            taskType={item}
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
+            option={option}
+            isOpacity={opacity}
+            selectedOption={selectedFilter}
+            setSelectedOption={setSelectedFilter}
             buttonClassName={buttonClassName}
-            bgColorSelected={bgColorSelected}
+            bgColor={BgColor(option)}
+            bgColorSelected={bgColorSelected || BgColor(option)}
           />
           /*<div
             key={item.type}

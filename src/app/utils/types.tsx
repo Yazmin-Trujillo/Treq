@@ -23,5 +23,5 @@ export type TaskLetterType = {
   taskName: string;
   taskLocation: string;
   taskType: Services;
-  state: State;
+  taskState: State;
 };

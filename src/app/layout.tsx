@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center justify-center antialiased`}
       >
+        <div>Barra de navegacion</div>
         {children}
       </body>
     </html>

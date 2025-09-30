@@ -17,6 +17,9 @@ const SERVICES_TYPE: Services[] = [
 
 export default function CreateEditTicke() {
   const [selectedService] = useState<string | undefined>();
+  const [selectedServicesType, setSelectedServicesType] = useState<
+    string | undefined
+  >();
 
   const onSubmit = (formData: FormData) => {
     console.log('tipo de servicio seleccionado', selectedService);
@@ -44,8 +47,11 @@ export default function CreateEditTicke() {
         </div>
         <ServiceTypeButtons
           options={SERVICES_TYPE}
+          selectedFilter={selectedServicesType}
+          setSelectedFilter={setSelectedServicesType}
           label='Tipo de servicio'
           buttonClassName='py-2'
+          opacity
         />
         <div className='w-full'>
           <div className='text-xl sm:text-2xl md:text-3xl'>Descripcion</div>
